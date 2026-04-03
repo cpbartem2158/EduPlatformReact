@@ -1,41 +1,104 @@
-import { useState } from 'react'
 import './App.css'
 import Header from './components/layout/Header'
-import ProductList from './components/features/ProductList'
-import { lessons } from './data/mockData'
+import CourseCatalog from './components/features/CourseCatalog'
+import LessonList from './components/features/LessonList'
+import ReviewsSection from './components/features/ReviewsSection'
+import {
+    COURSE_CATEGORIES,
+    courses,
+    featuredCourseId,
+    filterCoursesByCategory,
+    getLessonsForCourse,
+    reviews,
+} from './data/mockData'
 
 function App() {
-  const handleSearch = (searchTerm) => {
-    console.log("Поиск: ", searchTerm);
-  };
+    /** Заглушки под будущие лабораторные **/
+    const handleSearch = (searchTerm) => {
+        console.log('[EduPlatform] Поиск курсов:', searchTerm)
+    }
 
-  const handleAddToCart = (product) => {
-    console.log("Добавление в корзину: ", product);
-  };
+    const handleFilterChange = (categoryId) => {
+        console.log('[EduPlatform] Выбран фильтр категории:', categoryId)
+    }
 
-  const handleViewDetails = (product) => {
-    console.log("Просмотр деталей: ", product);
-  };
+    const handleContinueCourse = (course) => {
+        console.log('[EduPlatform] Продолжить курс:', course.id, course.title)
+    }
 
-  return (
-    <div className="app">
-      <Header title="Магазин товаров" onSearch={handleSearch} />
+    const handleOpenCourseDetails = (course) => {
+        console.log('[EduPlatform] Открыть описание курса:', course.id)
+    }
 
-      <main className="app_main">
-        <div className="app_container">
-          <section className="app_section">
-            <h2>Товары</h2>
-            <ProductList
-              products={lessons}
-              filterText=''
-              onAddToCart={handleAddToCart}
-              onViewDetails={handleViewDetails}
+    const handleSaveCourse = (course) => {
+        console.log('[EduPlatform] В избранное:', course.id)
+    }
+
+    const handleSelectLesson = (lesson) => {
+        console.log('[EduPlatform] Выбран урок:', lesson.id, lesson.title)
+    }
+
+    const handleReviewHelpful = (review) => {
+        console.log('[EduPlatform] Отзыв отмечен как полезный:', review.id)
+    }
+
+    const webCourses = filterCoursesByCategory(courses, 'web')
+    const featuredCourse = courses.find((c) => c.id === featuredCourseId)
+    const featuredLessons = getLessonsForCourse(featuredCourseId)
+
+    return (
+        <div className="app">
+            <Header
+                title="EduPlatform"
+                onSearch={handleSearch}
+                searchPlaceholder="Поиск курсов, направлений..."
             />
-          </section>
+
+            <main className="app_main">
+                <div className="app_container">
+                    <CourseCatalog
+                        title="Каталог курсов"
+                        courses={courses}
+                        activeCategoryId="all"
+                        categories={COURSE_CATEGORIES}
+                        onFilterChange={handleFilterChange}
+                        onContinue={handleContinueCourse}
+                        onOpenDetails={handleOpenCourseDetails}
+                        onSaveForLater={handleSaveCourse}
+                    />
+
+                    <CourseCatalog
+                        title="Веб-разработка: подборка (статическая фильтрация)"
+                        courses={webCourses}
+                        activeCategoryId="web"
+                        categories={COURSE_CATEGORIES}
+                        onFilterChange={handleFilterChange}
+                        onContinue={handleContinueCourse}
+                        onOpenDetails={handleOpenCourseDetails}
+                        onSaveForLater={handleSaveCourse}
+                    />
+
+                    {featuredCourse && (
+                        <section className="app_section lesson-section">
+                            <h2>Уроки выбранного курса</h2>
+                            <p className="lesson-section__lead">
+                                Ниже — список уроков для курса «{featuredCourse.title}». Прогресс
+                                задан статически в мок-данных; позже сюда подключат состояние.
+                            </p>
+                            <LessonList
+                                courseTitle={featuredCourse.title}
+                                lessons={featuredLessons}
+                                completedLessonIds={featuredCourse.completedLessonIds}
+                                onSelectLesson={handleSelectLesson}
+                            />
+                        </section>
+                    )}
+
+                    <ReviewsSection reviews={reviews} onReviewHelpful={handleReviewHelpful} />
+                </div>
+            </main>
         </div>
-      </main>
-    </div>
-  )
+    )
 }
 
 export default App

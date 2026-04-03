@@ -26,8 +26,8 @@
 
   min-height: 100%;
   width: 100%;
-  max-width: var(--container-max);
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   text-align: left;
   box-sizing: border-box;
 }
@@ -141,6 +141,10 @@
 .app_container {
   max-width: var(--container-max);
   margin: 0 auto;
+}
+
+.app .app_container > * + * {
+  margin-top: 48px;
 }
 
 .app_section h2 {
@@ -402,4 +406,396 @@
   .app .card:focus-within {
     transform: none;
   }
+}
+
+/* ——— EduPlatform: ProgressBar ——— */
+.app .progress-bar {
+  margin-bottom: 14px;
+}
+
+.app .progress-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.app .progress-bar__label {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.app .progress-bar__value {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.app .progress-bar__track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 31, 72, 0.08);
+  overflow: hidden;
+}
+
+.app .progress-bar__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  transition: width 0.35s ease;
+}
+
+/* ——— InstructorInfo ——— */
+.app .instructor-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0 4px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(0, 31, 72, 0.08);
+}
+
+.app .instructor-info--compact {
+  padding: 10px 0 2px;
+}
+
+.app .instructor-info__avatar {
+  border-radius: 50%;
+  border: 2px solid rgba(21, 83, 172, 0.2);
+  background: var(--color-bg);
+}
+
+.app .instructor-info__name {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 2px;
+  color: var(--color-text);
+}
+
+.app .instructor-info__role {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.app .instructor-info__company {
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  margin: 4px 0 0;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ——— Course card ——— */
+.app .course-card .course-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.app .course-card__category {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 106, 255, 0.12);
+  color: var(--color-primary-dark);
+}
+
+.app .course-card__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.app .course-card__rating-star {
+  color: var(--color-star);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.app .course-card__rating-count {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.app .course-card__lessons-meta {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-text-light);
+  margin: 0 0 8px;
+}
+
+.app .course-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 480px) {
+  .app .course-card__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .app .course-card__actions .btn {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+/* ——— CourseCatalog ——— */
+.app .course-catalog__head {
+  margin-bottom: 20px;
+}
+
+.app .course-catalog__head h2 {
+  margin-bottom: 16px;
+}
+
+.app .course-catalog__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.app .course-catalog__chip {
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(21, 83, 172, 0.25);
+  background: var(--color-bg-card);
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.app .course-catalog__chip:hover {
+  border-color: var(--color-primary);
+  background: rgba(0, 106, 255, 0.06);
+}
+
+.app .course-catalog__chip--active {
+  border-color: var(--color-primary);
+  background: rgba(0, 106, 255, 0.12);
+  box-shadow: 0 0 0 2px rgba(21, 83, 172, 0.15);
+}
+
+.app .course-catalog__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 601px) {
+  .app .course-catalog__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app .course-catalog__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* ——— LessonList ——— */
+.app .lesson-section__lead {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-light);
+  margin: 0 0 20px;
+  max-width: 72ch;
+  text-align: left;
+}
+
+.app .lesson-list {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(21, 83, 172, 0.12);
+  padding: 20px 20px 12px;
+  box-shadow: 0 4px 20px rgba(0, 31, 72, 0.05);
+}
+
+.app .lesson-list__course-title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 0 16px;
+  color: #002d6d;
+}
+
+.app .lesson-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app .lesson-list__item {
+  border-bottom: 1px solid rgba(0, 31, 72, 0.06);
+}
+
+.app .lesson-list__item:last-child {
+  border-bottom: none;
+}
+
+.app .lesson-list__row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 4px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.app .lesson-list__row:hover {
+  background: rgba(0, 106, 255, 0.05);
+}
+
+.app .lesson-list__row:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.app .lesson-list__order {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  min-width: 1.5rem;
+}
+
+.app .lesson-list__title {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.app .lesson-list__duration {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.app .lesson-list__status {
+  font-size: 14px;
+  color: var(--color-primary);
+}
+
+.app .lesson-list__row--done .lesson-list__title {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(0, 31, 72, 0.25);
+}
+
+/* ——— Review ——— */
+.app .reviews-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.app .review {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(21, 83, 172, 0.12);
+  padding: 18px 20px;
+  text-align: left;
+  box-shadow: 0 4px 16px rgba(0, 31, 72, 0.04);
+}
+
+.app .review__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.app .review__avatar {
+  border-radius: 50%;
+  border: 2px solid rgba(21, 83, 172, 0.15);
+}
+
+.app .review__author {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 2px;
+  color: var(--color-text);
+}
+
+.app .review__date {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.app .review__rating {
+  display: flex;
+  gap: 2px;
+}
+
+.app .review__star {
+  color: rgba(0, 31, 72, 0.2);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.app .review__star--on {
+  color: var(--color-star);
+}
+
+.app .review__text {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-text-light);
+  margin: 0 0 12px;
+}
+
+.app .review__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app .review__actions .btn {
+  padding: 8px 14px;
+  font-size: 13px;
 }

@@ -1,4 +1,4 @@
-const Header = ({ title, onSearch }) => {
+const Header = ({ title, onSearch, searchPlaceholder = 'Поиск...' }) => {
     return (
         <header className="header">
             <div className="header__container">
@@ -8,7 +8,7 @@ const Header = ({ title, onSearch }) => {
                     <div className="header__search">
                         <input
                             type="text"
-                            placeholder="Поиск..."
+                            placeholder={searchPlaceholder}
                             className="header__search-input"
                             onChange={(e) => onSearch(e.target.value)}
                         />
