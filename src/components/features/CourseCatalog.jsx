@@ -1,13 +1,9 @@
 import CourseCard from './CourseCard';
-import { getLessonsForCourse } from '../../data/mockData';
+import { filterCoursesByCategory, getLessonsForCourse } from '../../data/mockData';
 
-/**
- * Композитный блок: панель «фильтра» (заглушки) + сетка CourseCard.
- * Активная категория задаётся родителем статически (без useState).
- */
 const CourseCatalog = ({
     title = 'Каталог курсов',
-    courses,
+    courses = [],
     activeCategoryId = 'all',
     categories,
     onFilterChange,
@@ -15,6 +11,8 @@ const CourseCatalog = ({
     onOpenDetails,
     onSaveForLater,
 }) => {
+    const visibleCourses = filterCoursesByCategory(courses, activeCategoryId);
+
     return (
         <section className="course-catalog app_section">
             <div className="course-catalog__head">
@@ -40,16 +38,24 @@ const CourseCatalog = ({
             </div>
 
             <div className="course-catalog__grid">
-                {courses.map((course) => (
-                    <CourseCard
-                        key={course.id}
-                        course={course}
-                        lessonsTotal={getLessonsForCourse(course.id).length}
-                        onContinue={onContinue}
-                        onOpenDetails={onOpenDetails}
-                        onSaveForLater={onSaveForLater}
-                    />
-                ))}
+                {visibleCourses.length === 0 ? (
+                    <p className="course-catalog__empty" role="status">
+                        {activeCategoryId === 'all'
+                            ? 'В каталоге пока нет курсов.'
+                            : 'В этом направлении пока нет курсов.'}
+                    </p>
+                ) : (
+                    visibleCourses.map((course) => (
+                        <CourseCard
+                            key={course.id}
+                            course={course}
+                            lessonsTotal={getLessonsForCourse(course.id).length}
+                            onContinue={onContinue}
+                            onOpenDetails={onOpenDetails}
+                            onSaveForLater={onSaveForLater}
+                        />
+                    ))
+                )}
             </div>
         </section>
     );

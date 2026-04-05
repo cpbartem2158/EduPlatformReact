@@ -1,13 +1,10 @@
-/**
- * Краткая карточка преподавателя — переиспользуется в CourseCard и др.
- */
 const InstructorInfo = ({
     instructor,
     compact = false, 
     className = ''
  }) => {
     if (!instructor) return null;
-
+    
     return (
         <div
             className={`instructor-info ${compact ? 'instructor-info--compact' : ''} ${className}`.trim()}

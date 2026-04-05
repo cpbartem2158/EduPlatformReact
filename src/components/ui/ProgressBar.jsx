@@ -1,3 +1,5 @@
+import { calculateProgress } from '../../utils/calculateProgress';
+
 const ProgressBar = ({
     value,
     max = 100,
@@ -6,7 +8,7 @@ const ProgressBar = ({
     className = '',
 }) => {
     const safeMax = max > 0 ? max : 100;
-    const pct = Math.min(100, Math.max(0, Math.round((value / safeMax) * 100)));
+    const pct = calculateProgress(value, safeMax);
 
     return (
         <div className={`progress-bar ${className}`.trim()} role="group" aria-label={label}>

@@ -154,3 +154,72 @@ export const featuredCourseId = 'reactBasics';
 export function getLessonsForCourse(courseId) {
     return lessonsByCourseId[courseId] ?? [];
 }
+
+export const questions = [
+    {
+        id: 'q1',
+        prompt: 'Какой язык программирования используется в React?',
+        options: [
+            { id: 'q1-a', label: 'JavaScript' },
+            { id: 'q1-b', label: 'Python' },
+            { id: 'q1-c', label: 'Java' },
+            { id: 'q1-d', label: 'C#' },
+        ],
+        correctOptionId: 'q1-a',
+    },
+    {
+        id: 'q2',
+        prompt: 'Что такое JSX?',
+        options: [
+            { id: 'q2-a', label: 'Язык программирования' },
+            { id: 'q2-b', label: 'Синтаксис расширения JavaScript' },
+            { id: 'q2-c', label: 'Библиотека CSS' },
+            { id: 'q2-d', label: 'Серверный фреймворк' },
+        ],
+        correctOptionId: 'q2-b',
+    },
+    {
+        id: 'q3',
+        prompt: 'Какая функция используется для рендера React?',
+        options: [
+            { id: 'q3-a', label: 'render()' },
+            { id: 'q3-b', label: 'except()' },
+            { id: 'q3-c', label: 'createRoot()' },
+            { id: 'q3-d', label: 'display()' },
+        ],
+        correctOptionId: 'q3-c',
+    },
+    {
+        id: 'q4',
+        prompt: 'Что делает useState?',
+        options: [
+            { id: 'q4-a', label: 'Управляет побочными эффектами' },
+            { id: 'q4-b', label: 'Добавляет состояние в функциональные компоненты' },
+            { id: 'q4-c', label: 'Обрабатывает события' },
+            { id: 'q4-d', label: 'Создает стили' },
+        ],
+        correctOptionId: 'q4-b',
+    },
+    {
+        id: 'q5',
+        prompt: 'Что такое props?',
+        options: [
+            { id: 'q5-a', label: 'Внутреннее состояние компонента' },
+            { id: 'q5-b', label: 'Данные, передаваемые от родителя к дочернему' },
+            { id: 'q5-c', label: 'CSS классы' },
+            { id: 'q5-d', label: 'Функции жизненного цикла' },
+        ],
+        correctOptionId: 'q5-b',
+    },
+    {
+        id: 'q6',
+        prompt: 'Что проверяет StrictMode?',
+        options: [
+            { id: 'q6-a', label: 'Скорость рендера' },
+            { id: 'q6-b', label: 'Потенциальные проблемы в коде' },
+            { id: 'q6-c', label: 'Размер бандла' },
+            { id: 'q6-d', label: 'Совместимость с IE' },
+        ],
+        correctOptionId: 'q6-b',
+    },
+];

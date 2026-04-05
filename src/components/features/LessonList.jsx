@@ -1,7 +1,3 @@
-/**
- * Список уроков курса — completedLessonIds задаётся статически из моков.
- */
-
 const LessonList = ({
     courseTitle,
     lessons,
@@ -11,7 +7,6 @@ const LessonList = ({
 }) => {
     
     const completed = new Set(completedLessonIds);
-
     return (
         <div className={`lesson-list ${className}`.trim()}>
             {courseTitle && <h3 className="lesson-list__course-title">{courseTitle}</h3>}

@@ -3,9 +3,6 @@ import Button from '../ui/Button';
 import ProgressBar from '../ui/ProgressBar';
 import InstructorInfo from './InstructorInfo';
 
-/**
- * Карточка курса: прогресс, рейтинг, преподаватель, действия.
- */
 const CourseCard = ({
     course,
     lessonsTotal,

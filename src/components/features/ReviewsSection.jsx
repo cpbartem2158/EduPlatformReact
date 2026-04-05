@@ -1,8 +1,5 @@
 import Review from './Review';
 
-/**
- * Композитный блок: список отзывов на основе переиспользуемого Review.
- */
 const ReviewsSection = ({ 
     title = 'Отзывы студентов', 
     reviews: items, 

@@ -3,6 +3,7 @@ import Header from './components/layout/Header'
 import CourseCatalog from './components/features/CourseCatalog'
 import LessonList from './components/features/LessonList'
 import ReviewsSection from './components/features/ReviewsSection'
+import QuizComponent from './components/features/QuizComponent'
 import {
     COURSE_CATEGORIES,
     courses,
@@ -10,10 +11,10 @@ import {
     filterCoursesByCategory,
     getLessonsForCourse,
     reviews,
+    questions,
 } from './data/mockData'
 
 function App() {
-    /** Заглушки под будущие лабораторные **/
     const handleSearch = (searchTerm) => {
         console.log('[EduPlatform] Поиск курсов:', searchTerm)
     }
@@ -40,6 +41,10 @@ function App() {
 
     const handleReviewHelpful = (review) => {
         console.log('[EduPlatform] Отзыв отмечен как полезный:', review.id)
+    }
+
+    const handleQuizFinished = (result) => {
+        console.log('[EduPlatform] Мини-тест завершен:', result)
     }
 
     const webCourses = filterCoursesByCategory(courses, 'web')
@@ -95,6 +100,7 @@ function App() {
                     )}
 
                     <ReviewsSection reviews={reviews} onReviewHelpful={handleReviewHelpful} />
+                    <QuizComponent questions={questions} onFinished={handleQuizFinished} />
                 </div>
             </main>
         </div>
