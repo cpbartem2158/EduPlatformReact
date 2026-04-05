@@ -3,7 +3,11 @@ import Review from './Review';
 /**
  * Композитный блок: список отзывов на основе переиспользуемого Review.
  */
-const ReviewsSection = ({ title = 'Отзывы студентов', reviews: items, onReviewHelpful }) => {
+const ReviewsSection = ({ 
+    title = 'Отзывы студентов', 
+    reviews: items, 
+    onReviewHelpful 
+}) => {
     return (
         <section className="reviews-section app_section">
             <h2>{title}</h2>

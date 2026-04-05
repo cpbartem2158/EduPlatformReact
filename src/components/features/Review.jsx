@@ -3,7 +3,10 @@ import Button from '../ui/Button';
 /**
  * Один отзыв — переиспользуемый блок с рейтингом.
  */
-const Review = ({ review, onHelpful }) => {
+const Review = ({ 
+    review, 
+    onHelpful 
+}) => {
     const stars = Array.from({ length: 5 }, (_, i) => i < review.rating);
 
     return (

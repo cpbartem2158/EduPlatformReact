@@ -1,4 +1,8 @@
-const Header = ({ title, onSearch, searchPlaceholder = 'Поиск...' }) => {
+const Header = ({ 
+    title,
+    onSearch, 
+    searchPlaceholder = 'Поиск...' 
+}) => {
     return (
         <header className="header">
             <div className="header__container">

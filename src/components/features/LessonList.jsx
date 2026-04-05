@@ -1,6 +1,7 @@
 /**
  * Список уроков курса — completedLessonIds задаётся статически из моков.
  */
+
 const LessonList = ({
     courseTitle,
     lessons,
@@ -8,6 +9,7 @@ const LessonList = ({
     onSelectLesson,
     className = '',
 }) => {
+    
     const completed = new Set(completedLessonIds);
 
     return (

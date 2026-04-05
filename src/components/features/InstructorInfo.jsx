@@ -1,7 +1,11 @@
 /**
  * Краткая карточка преподавателя — переиспользуется в CourseCard и др.
  */
-const InstructorInfo = ({ instructor, compact = false, className = '' }) => {
+const InstructorInfo = ({
+    instructor,
+    compact = false, 
+    className = ''
+ }) => {
     if (!instructor) return null;
 
     return (
