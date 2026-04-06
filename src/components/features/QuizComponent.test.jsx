@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QuizComponent from './QuizComponent';
@@ -56,7 +56,10 @@ describe('QuizComponent', () => {
         const user = userEvent.setup();
         const onFinished = jest.fn();
         render(
-            <QuizHarness title="Контроль" questions={questions} onFinished={onFinished} />,
+            <QuizHarness 
+            title="Контроль"
+            questions={questions} 
+            onFinished={onFinished} />,
         );
         expect(screen.getByRole('heading', { name: 'Контроль' })).toBeInTheDocument();
         await user.click(screen.getByLabelText('Париж'));
