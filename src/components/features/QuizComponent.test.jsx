@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QuizComponent from './QuizComponent';
@@ -70,7 +70,14 @@ describe('QuizComponent', () => {
         expect(status).toHaveTextContent('Правильно: 2 из 2');
         expect(status).toHaveTextContent('100 процентов');
         expect(onFinished).toHaveBeenCalledTimes(1);
-        expect(onFinished.mock.calls[0][0].scorePercent).toBe(100);
+        expect(onFinished).toHaveBeenCalledWith(
+            expect.objectContaining({
+                scorePercent: 100,
+                correctCount: 2,
+                total: 2,
+                isComplete: true,
+            }),
+        );
     });
 
     test('сообщает о неполных ответах', async () => {
