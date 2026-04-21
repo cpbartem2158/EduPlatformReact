@@ -30,3 +30,4 @@ const InstructorInfo = ({
 };
 
 export default InstructorInfo;
+

@@ -31,3 +31,4 @@ describe('LessonList', () => {
         expect(onSelectLesson).toHaveBeenCalledWith(lessons[1]);
     });
 });
+
